@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Modifier un employé</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>Nom</label>
+
+<input
+type="text"
+name="nom"
+value="{{ employe.nom }}"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+value="{{ employe.email }}"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Nouveau mot de passe</label>
+
+<input
+type="password"
+name="password"
+class="form-control">
+
+<small class="text-muted">
+Laisser vide pour conserver le mot de passe actuel.
+</small>
+
+</div>
+
+<div class="mb-3">
+
+<label>Rôle</label>
+
+<select
+name="role"
+class="form-select">
+
+<option value="admin"
+{% if employe.role=="admin" %}selected{% endif %}>
+Administrateur
+</option>
+
+<option value="conseiller"
+{% if employe.role=="conseiller" %}selected{% endif %}>
+Conseiller
+</option>
+
+<option value="mecanicien"
+{% if employe.role=="mecanicien" %}selected{% endif %}>
+Mécanicien
+</option>
+
+<option value="direction"
+{% if employe.role=="direction" %}selected{% endif %}>
+Direction
+</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-warning">
+
+Enregistrer
+
+</button>
+
+<a href="/employes"
+class="btn btn-secondary">
+
+Annuler
+
+</a>
+
+</form>
+
+{% endblock %}

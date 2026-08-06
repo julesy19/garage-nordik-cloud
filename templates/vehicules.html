@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Liste des véhicules</h2>
+
+<a href="/ajouter_vehicule"
+class="btn btn-primary mb-3">
+Ajouter un véhicule
+</a>
+
+<table class="table table-bordered">
+
+<thead class="table-dark">
+<tr>
+<th>ID</th>
+<th>Marque</th>
+<th>Modèle</th>
+<th>Année</th>
+<th>Immatriculation</th>
+<th>Propriétaire</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for vehicule in vehicules %}
+
+<tr>
+<td>{{ vehicule.id }}</td>
+<td>{{ vehicule.marque }}</td>
+<td>{{ vehicule.modele }}</td>
+<td>{{ vehicule.annee }}</td>
+<td>{{ vehicule.immatriculation }}</td>
+<td>{{ vehicule.client.nom }}</td>
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}

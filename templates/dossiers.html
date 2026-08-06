@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Dossiers de réparation</h2>
+
+<a href="/ajouter_dossier" class="btn btn-primary mb-3">
+    Ajouter un dossier
+</a>
+
+<table class="table table-bordered table-striped">
+
+    <thead class="table-dark">
+
+        <tr>
+
+            <th>ID</th>
+            <th>Véhicule</th>
+            <th>Client</th>
+            <th>État</th>
+            <th>Coût</th>
+            <th>Validation</th>
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for dossier in dossiers %}
+
+        <tr>
+
+            <td>{{ dossier.id }}</td>
+
+            <td>
+                {{ dossier.vehicule.marque }}
+                {{ dossier.vehicule.modele }}
+            </td>
+
+            <td>
+                {{ dossier.vehicule.client.nom }}
+            </td>
+
+            <td>
+                {{ dossier.etat }}
+            </td>
+
+            <td>
+                {{ dossier.cout_estime }} $
+            </td>
+
+            <td>
+
+                {% if dossier.validation_client %}
+
+                    Oui
+
+                {% else %}
+
+                    Non
+
+                {% endif %}
+
+            </td>
+
+            <td>
+
+                <a href="/upload_photo/{{ dossier.id }}"
+                   class="btn btn-primary btn-sm">
+
+                    Ajouter photo
+
+                </a>
+
+                <a href="/photos/{{ dossier.id }}"
+                   class="btn btn-info btn-sm">
+
+                    Voir les photos
+
+                </a>
+
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

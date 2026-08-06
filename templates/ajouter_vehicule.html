@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Ajouter un véhicule</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Marque</label>
+<input class="form-control" name="marque">
+</div>
+
+<div class="mb-3">
+<label>Modèle</label>
+<input class="form-control" name="modele">
+</div>
+
+<div class="mb-3">
+<label>Année</label>
+<input class="form-control" name="annee">
+</div>
+
+<div class="mb-3">
+<label>Immatriculation</label>
+<input class="form-control" name="immatriculation">
+</div>
+
+<div class="mb-3">
+<label>VIN</label>
+<input class="form-control" name="vin">
+</div>
+
+<div class="mb-3">
+<label>Client</label>
+
+<select class="form-control" name="client_id">
+
+{% for client in clients %}
+
+<option value="{{ client.id }}">
+{{ client.nom }} {{ client.prenom }}
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<button class="btn btn-success">
+Enregistrer
+</button>
+
+</form>
+
+{% endblock %}

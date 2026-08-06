@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Ajouter un rendez-vous</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Date du rendez-vous</label>
+
+<input type="datetime-local"
+class="form-control"
+name="date_rdv">
+</div>
+
+<div class="mb-3">
+<label>Description du problème</label>
+
+<textarea
+class="form-control"
+name="description">
+</textarea>
+
+</div>
+
+<div class="mb-3">
+
+<label>Statut</label>
+
+<select
+class="form-control"
+name="statut">
+
+<option>En attente</option>
+<option>Confirmé</option>
+<option>Terminé</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Véhicule</label>
+
+<select
+class="form-control"
+name="vehicule_id">
+
+{% for vehicule in vehicules %}
+
+<option value="{{vehicule.id}}">
+
+{{vehicule.marque}}
+{{vehicule.modele}}
+-
+{{vehicule.client.nom}}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+</div>
+
+<button class="btn btn-success">
+
+Enregistrer
+
+</button>
+
+</form>
+
+{% endblock %}

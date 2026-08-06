@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Garage Nordik Services</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+
+<div class="container">
+
+<a class="navbar-brand fw-bold" href="/">
+🚗 Garage Nordik Services
+</a>
+
+<button class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse" id="navbarNav">
+
+<!-- ================= MENU GAUCHE ================= -->
+
+<ul class="navbar-nav me-auto">
+
+<li class="nav-item">
+
+<a class="nav-link" href="/">
+
+<i class="bi bi-house"></i>
+
+Accueil
+
+</a>
+
+</li>
+
+<!-- ================= ESPACE CLIENT ================= -->
+
+{% if not current_user.is_authenticated %}
+
+<li class="nav-item">
+
+<a class="nav-link" href="/prendre_rendezvous">
+
+<i class="bi bi-calendar-plus"></i>
+
+Prendre rendez-vous
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="/suivi">
+
+<i class="bi bi-search"></i>
+
+Suivi de réparation
+
+</a>
+
+</li>
+
+{% endif %}
+
+<!-- ================= ESPACE EMPLOYÉS ================= -->
+
+{% if current_user.is_authenticated %}
+
+{% if current_user.role in ["admin","conseiller","direction"] %}
+
+<li class="nav-item">
+
+<a class="nav-link" href="/clients">
+
+<i class="bi bi-people"></i>
+
+Clients
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="/vehicules">
+
+<i class="bi bi-car-front"></i>
+
+Véhicules
+
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="/rendezvous">
+
+<i class="bi bi-calendar-check"></i>
+
+Rendez-vous
+
+</a>
+
+</li>
+
+{% endif %}
+
+{% if current_user.role in ["admin","conseiller","mecanicien","direction"] %}
+
+<li class="nav-item">
+
+<a class="nav-link" href="/dossiers">
+
+<i class="bi bi-tools"></i>
+
+Réparations
+
+</a>
+
+</li>
+
+{% endif %}
+
+{% if current_user.role=="mecanicien" %}
+
+<li class="nav-item">
+
+<a class="nav-link" href="/dossiers">
+
+<i class="bi bi-wrench-adjustable"></i>
+
+Mes réparations
+
+</a>
+
+</li>
+
+{% endif %}
+
+{% if current_user.role=="direction" %}
+
+<li class="nav-item">
+
+<a class="nav-link" href="/rapports">
+
+<i class="bi bi-bar-chart"></i>
+
+Rapports
+
+</a>
+
+</li>
+
+{% endif %}
+
+{% if current_user.role=="admin" %}
+
+<li class="nav-item">
+
+<a class="nav-link" href="/employes">
+
+<i class="bi bi-person-badge"></i>
+
+Employés
+
+</a>
+
+</li>
+
+{% endif %}
+
+{% endif %}
+
+</ul>
+
+<!-- ================= MENU DROITE ================= -->
+
+<ul class="navbar-nav">
+
+{% if current_user.is_authenticated %}
+
+<li class="nav-item">
+
+<span class="navbar-text">
+
+<i class="bi bi-person-circle"></i>
+
+{{ current_user.nom }}
+
+<strong>({{ current_user.role|capitalize }})</strong>
+
+</span>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link text-warning" href="/logout">
+
+<i class="bi bi-box-arrow-right"></i>
+
+Déconnexion
+
+</a>
+
+</li>
+
+{% else %}
+
+<li class="nav-item">
+
+<a class="nav-link text-success" href="/login">
+
+<i class="bi bi-box-arrow-in-right"></i>
+
+Connexion Employé
+
+</a>
+
+</li>
+
+{% endif %}
+
+</ul>
+
+</div>
+
+</div>
+
+</nav>
+
+<!-- ================= MESSAGES ================= -->
+
+<div class="container mt-3">
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+
+{% if messages %}
+
+{% for category, message in messages %}
+
+<div class="alert alert-{{ category }} alert-dismissible fade show">
+
+{{ message }}
+
+<button class="btn-close"
+        data-bs-dismiss="alert">
+</button>
+
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+{% endwith %}
+
+</div>
+
+<!-- ================= CONTENU ================= -->
+
+<div class="container mt-4">
+
+{% block content %}
+{% endblock %}
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="bg-light border-top mt-5 py-3">
+
+<div class="container text-center text-muted">
+
+<strong>Garage Nordik Services © 2026</strong>
+
+<br>
+
+Gestion des clients • Véhicules • Rendez-vous • Réparations • Portail Client
+
+</div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

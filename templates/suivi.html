@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Suivi de votre réparation</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+
+<label>Adresse courriel</label>
+
+<input
+type="email"
+name="email"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Numéro de téléphone</label>
+
+<input
+type="text"
+name="telephone"
+class="form-control"
+required>
+
+</div>
+
+<button class="btn btn-primary">
+
+Consulter mon dossier
+
+</button>
+
+</form>
+
+<hr>
+
+{% if rendezvous %}
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<h4>État du dossier</h4>
+
+<p>
+
+<strong>Date du rendez-vous :</strong>
+
+{{ rendezvous.date_rdv }}
+
+</p>
+
+<p>
+
+<strong>Statut :</strong>
+
+{{ rendezvous.statut }}
+
+</p>
+
+<p>
+
+<strong>Description :</strong>
+
+{{ rendezvous.description }}
+
+</p>
+
+{% if rendezvous.vehicule.dossiers %}
+
+{% set dossier = rendezvous.vehicule.dossiers[0] %}
+
+<hr>
+
+<p>
+
+<strong>Réparation :</strong>
+
+{{ dossier.etat }}
+
+</p>
+
+<p>
+
+<strong>Coût estimé :</strong>
+
+{{ dossier.cout_estime }} $
+
+</p>
+
+<p>
+
+<strong>Validation :</strong>
+
+{% if dossier.validation_client %}
+
+Travaux acceptés
+
+{% else %}
+
+En attente de votre approbation
+
+{% endif %}
+
+</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+{% else %}
+
+{% if request.method == "POST" %}
+
+<div class="alert alert-danger">
+
+Aucun dossier ne correspond aux informations fournies.
+
+</div>
+
+{% endif %}
+
+{% endif %}
+
+{% endblock %}

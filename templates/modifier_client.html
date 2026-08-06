@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Modifier un client</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Nom</label>
+<input class="form-control" name="nom" value="{{ client.nom }}">
+</div>
+
+<div class="mb-3">
+<label>Prénom</label>
+<input class="form-control" name="prenom" value="{{ client.prenom }}">
+</div>
+
+<div class="mb-3">
+<label>Téléphone</label>
+<input class="form-control" name="telephone" value="{{ client.telephone }}">
+</div>
+
+<div class="mb-3">
+<label>Email</label>
+<input class="form-control" name="email" value="{{ client.email }}">
+</div>
+
+<div class="mb-3">
+<label>Adresse</label>
+<input class="form-control" name="adresse" value="{{ client.adresse }}">
+</div>
+
+<button class="btn btn-success">
+Mettre à jour
+</button>
+
+</form>
+
+{% endblock %}

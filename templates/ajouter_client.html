@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Ajouter un client</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Nom</label>
+<input type="text" class="form-control" name="nom" required>
+</div>
+
+<div class="mb-3">
+<label>Prénom</label>
+<input type="text" class="form-control" name="prenom">
+</div>
+
+<div class="mb-3">
+<label>Téléphone</label>
+<input type="text" class="form-control" name="telephone">
+</div>
+
+<div class="mb-3">
+<label>Email</label>
+<input type="email" class="form-control" name="email">
+</div>
+
+<div class="mb-3">
+<label>Adresse</label>
+<input type="text" class="form-control" name="adresse">
+</div>
+
+<button class="btn btn-success">
+Enregistrer
+</button>
+
+</form>
+
+{% endblock %}

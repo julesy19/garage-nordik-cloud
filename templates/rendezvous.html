@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Liste des rendez-vous</h2>
+
+<a href="/ajouter_rendezvous"
+class="btn btn-primary mb-3">
+
+Ajouter un rendez-vous
+
+</a>
+
+<table class="table table-bordered">
+
+<thead class="table-dark">
+
+<tr>
+
+<th>ID</th>
+<th>Date</th>
+<th>Description</th>
+<th>Statut</th>
+<th>Véhicule</th>
+<th>Client</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for rdv in rendezvous %}
+
+<tr>
+
+<td>{{ rdv.id }}</td>
+<td>{{ rdv.date_rdv }}</td>
+<td>{{ rdv.description }}</td>
+<td>{{ rdv.statut }}</td>
+<td>{{ rdv.vehicule.marque }} {{ rdv.vehicule.modele }}</td>
+<td>{{ rdv.vehicule.client.nom }}</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}

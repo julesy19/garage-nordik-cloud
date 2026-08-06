@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 class="mb-4">📊 Tableau de bord</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body text-center">
+                <h5>Clients</h5>
+                <h1>{{ nb_clients }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body text-center">
+                <h5>Véhicules</h5>
+                <h1>{{ nb_vehicules }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-warning">
+            <div class="card-body text-center">
+                <h5>Rendez-vous</h5>
+                <h1>{{ nb_rdv }}</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-danger text-white">
+            <div class="card-body text-center">
+                <h5>Réparations</h5>
+                <h1>{{ nb_dossiers }}</h1>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

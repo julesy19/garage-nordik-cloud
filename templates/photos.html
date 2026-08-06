@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Photos du dossier #{{ dossier.id }}</h2>
+
+<div class="row">
+
+{% for photo in dossier.photos %}
+
+<div class="col-md-4 mb-3">
+
+    <div class="card">
+
+        <img src="{{ photo.photo_url }}"
+             class="card-img-top"
+             style="height:250px; object-fit:cover;">
+
+    </div>
+
+</div>
+
+{% else %}
+
+<p>Aucune photo disponible.</p>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}

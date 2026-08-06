@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Liste des clients</h2>
+
+<a href="/ajouter_client" class="btn btn-primary mb-3">
+Ajouter un client
+</a>
+
+<table class="table table-bordered">
+
+<thead class="table-dark">
+<tr>
+<th>ID</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>Téléphone</th>
+<th>Email</th>
+<th>Adresse</th>
+<th>Actions</th>
+</tr>
+</thead>
+
+<tbody>
+
+{% for client in clients %}
+
+<tr>
+
+<td>{{ client.id }}</td>
+<td>{{ client.nom }}</td>
+<td>{{ client.prenom }}</td>
+<td>{{ client.telephone }}</td>
+<td>{{ client.email }}</td>
+<td>{{ client.adresse }}</td>
+
+<td>
+
+<a href="/modifier_client/{{client.id}}"
+class="btn btn-warning btn-sm">
+Modifier
+</a>
+
+<a href="/supprimer_client/{{client.id}}"
+class="btn btn-danger btn-sm"
+onclick="return confirm('Supprimer ce client ?')">
+Supprimer
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+{% endblock %}

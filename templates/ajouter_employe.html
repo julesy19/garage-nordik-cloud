@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Ajouter un employé</h2>
+
+<form method="POST">
+
+<div class="mb-3">
+<label>Nom</label>
+<input
+type="text"
+name="nom"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+<label>Email</label>
+<input
+type="email"
+name="email"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+<label>Mot de passe</label>
+<input
+type="password"
+name="password"
+class="form-control"
+required>
+</div>
+
+<div class="mb-3">
+
+<label>Rôle</label>
+
+<select
+name="role"
+class="form-select">
+
+<option value="admin">Administrateur</option>
+
+<option value="conseiller">Conseiller</option>
+
+<option value="mecanicien">Mécanicien</option>
+
+<option value="direction">Direction</option>
+
+</select>
+
+</div>
+
+<button class="btn btn-success">
+
+Créer l'employé
+
+</button>
+
+</form>
+
+{% endblock %}

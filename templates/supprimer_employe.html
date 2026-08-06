@@ -1,0 +1,26 @@
+@app.route("/supprimer_employe/<int:id>")
+@login_required
+@role_required("admin")
+def supprimer_employe(id):
+
+    employe = Employe.query.get_or_404(id)
+
+    # Empêcher la suppression de son propre compte
+    if employe.id == current_user.id:
+
+        flash(
+            "Vous ne pouvez pas supprimer votre propre compte.",
+            "danger"
+        )
+
+        return redirect(url_for("employes"))
+
+    db.session.delete(employe)
+    db.session.commit()
+
+    flash(
+        "Employé supprimé avec succès.",
+        "success"
+    )
+
+    return redirect(url_for("employes"))

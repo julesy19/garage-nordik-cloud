@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+<h2 class="mb-4">
+
+🚗 Demande de rendez-vous
+
+</h2>
+
+<form method="POST">
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label>Nom</label>
+
+<input
+type="text"
+name="nom"
+class="form-control"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label>Prénom</label>
+
+<input
+type="text"
+name="prenom"
+class="form-control"
+required>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label>Téléphone</label>
+
+<input
+type="text"
+name="telephone"
+class="form-control"
+required>
+
+</div>
+
+<div class="col-md-6">
+
+<label>Email</label>
+
+<input
+type="email"
+name="email"
+class="form-control"
+required>
+
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<label>Marque</label>
+
+<input
+type="text"
+name="marque"
+class="form-control"
+required>
+
+</div>
+
+<div class="col-md-4">
+
+<label>Modèle</label>
+
+<input
+type="text"
+name="modele"
+class="form-control"
+required>
+
+</div>
+
+<div class="col-md-4">
+
+<label>Année</label>
+
+<input
+type="number"
+name="annee"
+class="form-control"
+required>
+
+</div>
+
+</div>
+
+<br>
+
+<label>Immatriculation</label>
+
+<input
+type="text"
+name="immatriculation"
+class="form-control"
+required>
+
+<br>
+
+<label>VIN (optionnel)</label>
+
+<input
+type="text"
+name="vin"
+class="form-control">
+
+<br>
+
+<label>Date souhaitée</label>
+
+<input
+type="datetime-local"
+name="date_rdv"
+class="form-control"
+required>
+
+<br>
+
+<label>Description du problème mécanique</label>
+
+<textarea
+name="description"
+rows="6"
+class="form-control"
+placeholder="Décrivez le problème rencontré..."
+required></textarea>
+
+<br>
+
+<button
+class="btn btn-success">
+
+Envoyer la demande
+
+</button>
+
+</form>
+
+</div>
+
+{% endblock %}
