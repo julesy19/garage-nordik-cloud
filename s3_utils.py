@@ -8,7 +8,7 @@ s3 = boto3.client(
     region_name=os.getenv("AWS_REGION")
 )
 
-BUCKET_NAME = os.getenv("S3_BUCKET")
+BUCKET_NAME = "garage-nordik-dev-77jq9r"
 
 print("BUCKET_NAME =", BUCKET_NAME)
 

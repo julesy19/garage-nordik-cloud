@@ -2,11 +2,13 @@ import os
 
 class Config:
 
-    SECRET_KEY = "garage2026"
+    SECRET_KEY = os.getenv("SECRET_KEY")
 
     SQLALCHEMY_DATABASE_URI = (
-        "mysql+pymysql://admin:22112223@"
-        "garage-nordikdb.ckjmwgqikrva.us-east-1.rds.amazonaws.com:3306/garage_nordik"
+        f"mysql+pymysql://{os.getenv('DB_USER')}:"
+        f"{os.getenv('DB_PASSWORD')}@"
+        f"{os.getenv('DB_HOST')}:3306/"
+        f"{os.getenv('DB_NAME')}"
     )
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
