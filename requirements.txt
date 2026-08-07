@@ -22,3 +22,4 @@ typing_extensions==4.15.0
 urllib3==1.26.20
 Werkzeug==3.1.8
 zipp==3.23.1
+gunicorn
